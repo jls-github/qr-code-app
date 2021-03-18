@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import QRCode from "qrcode";
+import { useState } from "react";
 
 function App() {
+  const [showCode, setShowCode] = useState(false);
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (!showCode) {
+      setShowCode(true);
+    }
+    QRCode.toCanvas(
+      document.getElementById("canvas"),
+      document.getElementById("qr-value").value,
+      (error) => {
+        if (error) console.error(error);
+      }
+    );
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Enter your qr code</h1>
+      <form>
+        <input id="qr-value" placeholder="enter your website"></input>
+        <button type="submit" onClick={(e) => handleClick(e)}>
+          QRCode-ify
+        </button>
+      </form>
+      <canvas id="canvas"></canvas>
     </div>
   );
 }
