@@ -1,7 +1,7 @@
 import "./App.css";
 import QRCode from "qrcode";
 import { useState } from "react";
-import {Button} from 'react-bootstrap';
+import { Button, Container, Form } from "react-bootstrap";
 
 function App() {
   const [showCode, setShowCode] = useState(false);
@@ -20,15 +20,28 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Enter your qr code</h1>
-      <form>
-        <input className="form-control" id="qr-value" placeholder="enter your website"></input>
-        <Button className="btn btn-primary" type="submit" onClick={(e) => handleClick(e)}>
-          QRCode-ify
-        </Button>
-      </form>
-      <canvas id="canvas"></canvas>
+    <div className="background">
+      <div className="background-picture"></div>
+      <div className="background-overlay"></div>
+      <Container className="my-5">
+        <h1 className="text-center my-2" style={{color: "white"}}>QR Code-ify</h1>
+        <h3 className="my-3" style={{color: "white"}}>Enter your Website</h3>
+        <Form className="d-flex justify-content-center flex-column">
+          <input
+            className="form-control"
+            id="qr-value"
+            placeholder="enter your website"
+          ></input>
+          <Button
+            className="btn btn-primary my-2 float-center"
+            type="submit"
+            onClick={(e) => handleClick(e)}
+          >
+            QRCode-ify
+          </Button>
+        </Form>
+        <canvas id="canvas"></canvas>
+      </Container>
     </div>
   );
 }
