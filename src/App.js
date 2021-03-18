@@ -1,6 +1,7 @@
 import "./App.css";
 import QRCode from "qrcode";
 import { useState } from "react";
+import {Button} from 'react-bootstrap';
 
 function App() {
   const [showCode, setShowCode] = useState(false);
@@ -22,10 +23,10 @@ function App() {
     <div>
       <h1>Enter your qr code</h1>
       <form>
-        <input id="qr-value" placeholder="enter your website"></input>
-        <button type="submit" onClick={(e) => handleClick(e)}>
+        <input className="form-control" id="qr-value" placeholder="enter your website"></input>
+        <Button className="btn btn-primary" type="submit" onClick={(e) => handleClick(e)}>
           QRCode-ify
-        </button>
+        </Button>
       </form>
       <canvas id="canvas"></canvas>
     </div>
