@@ -27,7 +27,7 @@ function App() {
         <Card className="card h-75 p-4">
 
         <h1 className="text-center my-2" >QR Code-ify</h1>
-        <h3 className="my-3">Enter your Website</h3>
+        <h3 className="my-3">Enter Your Website</h3>
         <Form className="d-flex justify-content-center flex-column">
           <input
             className="form-control"
